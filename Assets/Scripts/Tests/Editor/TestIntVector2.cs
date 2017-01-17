@@ -57,6 +57,20 @@
             IntVector2 child2 = new IntVectorChild2(1, 1);
             Assert.AreNotEqual(child1.GetHashCode(), child2.GetHashCode());
         }
+
+        [Test]
+        public void TestToString()
+        {
+            // Test that different vectors return the correct string
+            IntVector2 sut = new IntVector2(5, 62);
+            Assert.AreEqual(sut.ToString(), "5, 62");
+
+            sut = new IntVector2(0, 3);
+            Assert.AreEqual(sut.ToString(), "0, 3");
+
+            sut = new IntVector2(-51, 2345);
+            Assert.AreEqual(sut.ToString(), "-51, 2345");
+        }
     }
 
     public class IntVectorChild1 : IntVector2

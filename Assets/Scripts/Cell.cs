@@ -4,7 +4,13 @@
 
     public class Cell : MonoBehaviour
     {
-        public readonly static float YScale = Mathf.Cos(Mathf.PI / 6);
+        private AxialCoord _coord;
+
+        public AxialCoord Coord
+        {
+            set { _coord = value; }
+            get { return _coord; }
+        }
 
         void Start()
         {

@@ -3,11 +3,34 @@
     public class Chunk
     {
         public const int Size = 10;
-        private Cell[,] grid;
+        private Cell[,] _grid;
+        private ChunkCoord _coord;
 
-        public Chunk()
+        public ChunkCoord Coord
         {
-            grid = new Cell[Size, Size];
+            get { return _coord; }
+        }
+
+        public Chunk(ChunkCoord coord)
+        {
+            _coord = coord;
+            _grid = new Cell[Size, Size];
+        }
+
+        public void SetCell(int x, int y, Cell c)
+        {
+            _grid[x, y] = c;
+        }
+
+        /// <summary>
+        /// Get's the cell using the x and y values <em>relative to the chunks coordinate</em>
+        /// </summary>
+        /// <param name="x">The x position relative to the chunk's coordinates</param>
+        /// <param name="y">The y position relative to the chunk's coordinates</param>
+        /// <returns>The Cell at the given coord</returns>
+        public Cell GetCell(int x, int y)
+        {
+            return _grid[x, y];
         }
     }
 }

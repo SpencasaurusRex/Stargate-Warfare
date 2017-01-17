@@ -4,8 +4,8 @@
     {
         private const int HashPrime = 486187739;
 
-        private int x;
-        private int y;
+        protected int x;
+        protected int y;
 
         public int X
         {
@@ -46,6 +46,11 @@
                 hash = hash * HashPrime + y.GetHashCode();
                 return hash;
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}", x, y);
         }
     }
 }
