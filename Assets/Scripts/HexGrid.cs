@@ -12,7 +12,13 @@
         void Start()
         {
             _chunks = new Dictionary<ChunkCoord, Chunk>();
-            CreateChunk(new ChunkCoord(0, 0));
+            for (int i = -5; i < 5; i++)
+            {
+                for (int j = -5; j < 5; j++)
+                {
+                    CreateChunk(new ChunkCoord(i, j));
+                }
+            }
         }
 
         /// <summary>

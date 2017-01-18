@@ -34,6 +34,11 @@
             IntVector2 child1 = new IntVectorChild1(1, 1);
             IntVector2 child2 = new IntVectorChild2(1, 1);
             Assert.AreNotEqual(child1, child2);
+
+            // Children of same type are equal if same coords
+            IntVector2 child3 = new IntVectorChild1(1, 1);
+            IntVector2 child4 = new IntVectorChild1(1, 1);
+            Assert.AreEqual(child3, child4);
         }
 
         [Test]
@@ -56,6 +61,11 @@
             IntVector2 child1 = new IntVectorChild1(1, 1);
             IntVector2 child2 = new IntVectorChild2(1, 1);
             Assert.AreNotEqual(child1.GetHashCode(), child2.GetHashCode());
+
+            // Children of same type and same coords return same hashcode
+            IntVector2 child3 = new IntVectorChild1(1, 1);
+            IntVector2 child4 = new IntVectorChild1(1, 1);
+            Assert.AreEqual(child3.GetHashCode(), child4.GetHashCode());
         }
 
         [Test]
