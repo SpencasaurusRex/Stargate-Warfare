@@ -3,16 +3,15 @@
 
     public class Planet
     {
-        private HexGrid _grid;
-
         public HexGrid Grid
         {
-            get { return _grid; }
+            get;
+            set;
         }
 
         public Planet()
         {
-            _grid = new HexGrid();
+
         }
     }
 }

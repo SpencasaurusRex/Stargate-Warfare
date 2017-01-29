@@ -11,15 +11,5 @@
             set { _coord = value; }
             get { return _coord; }
         }
-
-        void Start()
-        {
-
-        }
-
-        void Update()
-        {
-
-        }
     }
 }

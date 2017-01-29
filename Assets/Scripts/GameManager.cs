@@ -6,11 +6,25 @@
     {
         public GameObject CellPrefab;
         public GameObject HexGridPrefab;
+        Planet Planet;
+
+        public static GameManager Instance
+        {
+            get;
+            set;
+        }
+
+        void Awake()
+        {
+            DontDestroyOnLoad(transform.gameObject);
+            Instance = this;
+        }
 
         void Start()
         {
             HexGrid.CellPrefab = CellPrefab;
-            CreateHexGrid();
+            Planet = new Planet();
+            Planet.Grid = CreateHexGrid();
         }
 
         void Update()
