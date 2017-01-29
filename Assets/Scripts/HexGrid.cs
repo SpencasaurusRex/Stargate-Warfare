@@ -12,14 +12,17 @@
         void Start()
         {
             _chunks = new Dictionary<ChunkCoord, Chunk>();
-            for (int i = -5; i < 5; i++)
-            {
-                for (int j = -5; j < 5; j++)
-                {
-                    CreateChunk(new ChunkCoord(i, j));
-                }
-            }
-        }
+			CreateChunk (new ChunkCoord(0,0)); // Center
+
+			CreateChunk (new ChunkCoord(0,1)); // N
+			CreateChunk (new ChunkCoord(1,1)); // NE
+			CreateChunk (new ChunkCoord(1,0)); // E
+			CreateChunk (new ChunkCoord(1,-1)); // SE
+			CreateChunk (new ChunkCoord(0,-1)); // S
+			CreateChunk (new ChunkCoord(-1,-1)); // SW
+			CreateChunk (new ChunkCoord(-1,0)); // W
+			CreateChunk (new ChunkCoord(-1,1)); // NW
+		}
 
         /// <summary>
         /// Try to get the cell at the given axial coordinates.
@@ -74,7 +77,8 @@
 
         private Cell CreateCell(AxialCoord coords)
         {
-            GameObject o = Instantiate(CellPrefab, transform) as GameObject;
+			GameObject o = Instantiate(CellPrefab) as GameObject;
+			o.transform.parent = transform;
             o.transform.localPosition = coords.ToPosition();
             Cell cell = o.GetComponent<Cell>();
             cell.Coord = coords;

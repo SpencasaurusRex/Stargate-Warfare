@@ -11,8 +11,11 @@
         }
 
         public Vector3 ToPosition()
-        {
-            return new Vector3(X + Y / 2f, Y * YScale, 0);
+		{
+			var absY = Mathf.Abs (Y);
+			var x = X + absY / 2f - absY / 2;
+			var y = Y * YScale;
+			return new Vector3(x, y, 0);
         }
     }
 }
