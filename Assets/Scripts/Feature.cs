@@ -8,6 +8,7 @@
         public static Feature Forest = new Feature("Forest", 1.25f);
         public static Feature Mountain = new Feature("Mountain", 2);
         public static Feature Volcano = new Feature("Volcano", false);
+        public static Feature Water = new Feature("Water", false);
         public static Feature Lava = new Feature("Lava", false);
 
         // Benefits
