@@ -10,26 +10,36 @@
     public class ColonyCell : Cell
     {
         private List<Feature> _features;
+		private Biome _biome;
 
-        // Randomly assign attributes TODO: do correctly
+		#region Unity Methods
         void Start()
         {
-            Biome = Util.PickRandomFrom(BiomeManager.Instance.Biomes);
-            GetComponent<SpriteRenderer>().color = Biome.Color;
+            
         }
+		#endregion	
 
+		#region Properties
         public Biome Biome
         {
-            get;
-            set;
+            get
+			{ 
+				return _biome;
+			}
+
+            set
+			{ 
+				_biome = value;
+				GetComponent<SpriteRenderer> ().color = _biome.Color;
+			}
         }
 
-        public Feature[] Features
+		public Feature[] Features
         {
             get { return _features.ToArray(); }
         }
-
-        public bool CanBeBuiltOn
+        
+		public bool CanBeBuiltOn
         {
             get
             {
@@ -49,7 +59,7 @@
         {
             get
             {
-                float multiplier = 1.0f;
+                var multiplier = 1.0f;
                 foreach (Feature f in Features)
                 {
                     multiplier *= f.BuildTimeMultiplier;
@@ -57,6 +67,13 @@
                 return multiplier;
             }
         }
+		#endregion
+		
+		#region Methods
+		public override void Init(Biome b)
+		{
+			Biome = b;
+		}
 
         public void AddFeature(Feature f)
         {
@@ -70,5 +87,6 @@
                 _features.Remove(f);
             }
         }
+		#endregion
     }
 }

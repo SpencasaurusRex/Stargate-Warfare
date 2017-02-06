@@ -12,16 +12,14 @@
         void Start()
         {
             _chunks = new Dictionary<ChunkCoord, Chunk>();
-			CreateChunk (new ChunkCoord(0,0)); // Center
 
-			CreateChunk (new ChunkCoord(0,1)); // N
-			CreateChunk (new ChunkCoord(1,1)); // NE
-			CreateChunk (new ChunkCoord(1,0)); // E
-			CreateChunk (new ChunkCoord(1,-1)); // SE
-			CreateChunk (new ChunkCoord(0,-1)); // S
-			CreateChunk (new ChunkCoord(-1,-1)); // SW
-			CreateChunk (new ChunkCoord(-1,0)); // W
-			CreateChunk (new ChunkCoord(-1,1)); // NW
+			for (int i = -10; i <= 10; i++)
+			{
+				for (int j = -10; j <= 10; j++)
+				{
+					CreateChunk (new ChunkCoord (i, j));
+				}
+			}
 		}
 
         /// <summary>
@@ -60,29 +58,46 @@
 
         private Chunk CreateChunk(ChunkCoord chunkCoord)
         {
+			var noise = Noise.GetNoiseGrid (chunkCoord);
+
             Chunk chunk = new Chunk(chunkCoord);
             for (int i = 0; i < Chunk.Size; i++)
             {
                 for (int j = 0; j < Chunk.Size; j++)
                 {
-                    AxialCoord chunkPos = chunkCoord.ToAxial();
-                    AxialCoord cellPos = new AxialCoord(chunkPos.X + i, chunkPos.Y + j);
-                    Cell c = CreateCell(cellPos);
-                    chunk.SetCell(i, j, c);
+                    var chunkPos = chunkCoord.ToAxial();
+                    var cellPos = new AxialCoord(chunkPos.X + i, chunkPos.Y + j);
+					var biome = GetBiome (noise[i,j]);
+					var cell = CreateCell(cellPos, biome);
+                    chunk.SetCell(i, j, cell);
                 }
             }
             _chunks.Add(chunkCoord, chunk);
             return chunk;
         }
 
-        private Cell CreateCell(AxialCoord coords)
+		private Cell CreateCell(AxialCoord coords, Biome biome)
         {
 			GameObject o = Instantiate(CellPrefab) as GameObject;
 			o.transform.parent = transform;
             o.transform.localPosition = coords.ToPosition();
-            Cell cell = o.GetComponent<Cell>();
+            var cell = o.GetComponent<Cell>();
             cell.Coord = coords;
+			cell.Init (biome);
             return cell;
         }
+
+		private Biome GetBiome(float val)
+		{
+			var lowestBiome = BiomeManager.Instance.Biomes [0];
+			foreach (Biome b in BiomeManager.Instance.Biomes)
+			{
+				if (b.Value < lowestBiome.Value && b.Value >= val)
+				{
+					lowestBiome = b;
+				}
+			}
+			return lowestBiome;
+		}
     }
 }

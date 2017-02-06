@@ -2,7 +2,7 @@
 {
     using UnityEngine;
 
-    public class Cell : MonoBehaviour
+    public abstract class Cell : MonoBehaviour
     {
         private AxialCoord _coord;
 
@@ -11,5 +11,9 @@
             set { _coord = value; }
             get { return _coord; }
         }
+
+		// TODO: abstract away biome, allow more general types
+		// ex: when initing a space hex, can give SpaceBiome
+		public abstract void Init(Biome b);
     }
 }

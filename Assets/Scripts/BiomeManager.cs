@@ -13,7 +13,6 @@ namespace SpencerHaney
         private void Awake()
         {
             Instance = this;
-            Debug.Log(Biomes[0]);
         }
     }
 }

@@ -23,10 +23,25 @@
             set { _color = value; }
         }
 
-        public Biome(string name, Color color)
+		[SerializeField]
+		private float _value;
+
+		public float Value
+		{
+			get { return _value; }
+			private set { _value = value; }
+		}
+
+		public Biome(string name, Color color, float value)
         {
             Name = name;
             Color = color;
+			Value = value;
         }
+
+		public override string ToString ()
+		{
+			return Name;
+		}
     }
 }
