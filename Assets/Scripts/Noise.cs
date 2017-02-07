@@ -5,7 +5,7 @@
 	{
 		public static float[,] GetNoiseGrid(ChunkCoord chunkCoord)
 		{
-			const float scale = 4;
+			const float scale = 8;
 
 			var map = new float[Chunk.Size,Chunk.Size];
 			var axialPos = chunkCoord.ToAxial ();

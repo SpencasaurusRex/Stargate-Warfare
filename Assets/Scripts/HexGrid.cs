@@ -13,11 +13,27 @@
         {
             _chunks = new Dictionary<ChunkCoord, Chunk>();
 
+			// Generate 20x20 chunks
 			for (int i = -10; i <= 10; i++)
 			{
 				for (int j = -10; j <= 10; j++)
 				{
 					CreateChunk (new ChunkCoord (i, j));
+				}
+			}
+
+			// Set center to solid ground
+			const int radius = 5;
+			for (int x = -radius; x <= radius; x++)
+			{
+				for (int y = -radius; y <= radius; y++)
+				{
+					Cell c;
+					if (TryGetCell (x, y, out c))
+					{
+						ColonyCell cc = (c as ColonyCell);
+						cc.Biome = BiomeManager.Instance.Biomes [2];
+					}
 				}
 			}
 		}
@@ -42,14 +58,17 @@
         /// <returns>Whether or not a chunk exists at the given position</returns>
         public bool TryGetCell(int x, int y, out Cell c)
         {
-            ChunkCoord coord = new ChunkCoord(x / Chunk.Size, y / Chunk.Size);
+			int chunkX = (x - Util.mod(x, Chunk.Size)) / Chunk.Size;
+			int chunkY = (y - Util.mod(y,Chunk.Size)) / Chunk.Size;
+
+			ChunkCoord coord = new ChunkCoord(chunkX, chunkY);
 
             Chunk chunk;
             if (_chunks.TryGetValue(coord, out chunk))
             {
-                int xIndex = x % Chunk.Size;
-                int yIndex = y % Chunk.Size;
-                c = chunk.GetCell(xIndex, yIndex);
+				int xIndex = Util.mod(x, Chunk.Size);
+				int yIndex = Util.mod(y, Chunk.Size);
+				c = chunk.GetCell(xIndex, yIndex);
                 return true;
             }
             c = null;

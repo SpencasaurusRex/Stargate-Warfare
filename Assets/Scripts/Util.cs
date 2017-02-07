@@ -10,5 +10,10 @@
             int index = Random.Range(0, array.Length);
             return array[index];
         }
+
+		public static int mod(int a, int b)
+		{
+			return (a % b + b) % b;
+		}
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace SpencerHaney
 {
+	using UnityEngine;
+
     public class Chunk
     {
         public const int Size = 10;
