@@ -1,19 +1,35 @@
-﻿namespace SpencerHaney
-{
-    using UnityEngine;
-    using System.Collections.Generic;
+﻿using UnityEngine;
 
-    public static class Util
-    {
-        public static T PickRandomFrom<T>(T[] array)
-        {
-            int index = Random.Range(0, array.Length);
-            return array[index];
-        }
+public class Util {
+	public static float DistanceSquared(Vector3 a, Vector3 b) {
+		float dx = a.x - b.x;
+		float dy = a.y - b.y;
+		float dz = a.z - b.z;
+		return dx * dx + dy * dy + dz * dz;
+	}
 
-		public static int mod(int a, int b)
-		{
-			return (a % b + b) % b;
-		}
-    }
+	public static float DistanceIgnoreY(Vector3 a, Vector3 b) {
+		return Mathf.Sqrt(DistanceSquaredIgnoreY(a, b));
+	}
+
+	public static float DistanceSquaredIgnoreY(Vector3 a, Vector3 b) {
+		float dx = a.x - b.x;
+		float dz = a.z - b.z;
+		return dx * dx + dz * dz;
+	}
+
+	public static Vector3 SetX(Vector3 vec, float x) {
+		vec.Set(x, vec.y, vec.z);
+		return vec;
+	}
+
+	public static Vector3 SetY(Vector3 vec, float y) {
+		vec.Set(vec.x, y, vec.z);
+		return vec;
+	}
+
+	public static Vector3 SetZ(Vector3 vec, float z) {
+		vec.Set(vec.x, vec.y, z);
+		return vec;
+	}
 }
