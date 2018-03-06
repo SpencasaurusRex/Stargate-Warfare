@@ -8,20 +8,29 @@ Provide a sense of progression and risk with every action, and steer away from m
 
 ### Types of Gameplay
 The game will consist of three different types of gameplay:
-- Colony Management
-- Missions
-- Spaceship battles
+- [Colony Management](#Colonies)
+- [Missions](#Missions)
+- [Spaceship battles](#Battles)
 
-### Colony Management
+### Colony Management <a name="Colonies"></a>
 The player will start out occupying a single planet and grow to expand to several more. Each planet, the player will be able to build buildings on hexagonal tiles.
 
-[//]: # "TODO: turn this into a table with additional info like 'requires power'"
+[//]: # "TODO: Add more info on the types, such as what resource they produce and what resources they take"
 There are the following building types:
-- Gate Complex: Holds the gate and acts as the control center for the planet's colony
-- Factory: Creates and builds various projects
-- Power Stations: Generates power for other power consuming buidings to use
-- Research Center: Produces research points to unlock new technologies
-- Farms: Produce food needed to sustain a population
-- Mines: Mines natural resources found in the world
 
-[//]: # "TODO: explaing more about colony management, and the other types of gameplay"
+| Building        | Purpose                                                               |
+| ---:            | ---                                                                   |
+| Gate Complex    | Holds the gate and acts as the control center for the planet's colony |
+| Factory         | Creates and builds various projects                                   |
+| Research Center | Produces research points to unlock new technologies                   |
+| Farm            | Produce food needed to sustain a population                           |
+| Mine            | Digs up natural resources found in the world                          |
+| Power Station   | The powerhouse of the colony                                          |
+
+Additionally, buildings can be upgraded with __improvements__: __TODO__
+
+### Missions <a name="Missions"/></a>
+__TODO__
+    
+### Spaceship Battles <a name="Battles"/></a>
+__TODO__
