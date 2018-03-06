@@ -29,8 +29,8 @@ There are the following building types:
 
 Additionally, buildings can be upgraded with __improvements__: __TODO__
 
-### Missions <a name="Missions"/></a>
+### Missions <a name="Missions"></a>
 __TODO__
     
-### Spaceship Battles <a name="Battles"/></a>
+### Spaceship Battles <a name="Battles"></a>
 __TODO__
