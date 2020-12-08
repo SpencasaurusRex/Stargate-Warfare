@@ -1,4 +1,4 @@
-# I don't plan on returning to this
+# I don't plan on returning to this, but some parts of this idea live on in [Aetherium](https://github.com/SpencasaurusRex/AetheriumPrototype1/)
 
 ## Stargate: Warfare
 Stargate: Warfare is a simple strategy game based in the unvierse depicted by the several [Stargate TV Series](https://en.wikipedia.org/wiki/Stargate)
