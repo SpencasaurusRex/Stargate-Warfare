@@ -1,3 +1,5 @@
+# I don't plan on returning to this
+
 ## Stargate: Warfare
 Stargate: Warfare is a simple strategy game based in the unvierse depicted by the several [Stargate TV Series](https://en.wikipedia.org/wiki/Stargate)
 
